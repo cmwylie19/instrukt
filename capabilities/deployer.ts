@@ -1,8 +1,7 @@
 import { kind, K8s, Log, sdk } from "pepr";
-import { WebApp } from "./webapp-v1alpha1";
 
 const { getOwnerRefFrom } = sdk;
-export default async function Deploy(instance: WebApp) {
+export default async function Deploy(instance: kind.GenericKind) {
   try {
     await Promise.all([
       K8s(kind.Deployment).Apply(deployment(instance), {
@@ -18,7 +17,7 @@ export default async function Deploy(instance: WebApp) {
   }
 }
 
-function deployment(instance: WebApp) {
+function deployment(instance: kind.GenericKind) {
   const { name, namespace } = instance.metadata!;
   const { replicas } = instance.spec!;
 
@@ -82,7 +81,7 @@ function deployment(instance: WebApp) {
   };
 }
 
-function service(instance: WebApp) {
+function service(instance: kind.GenericKind) {
   const { name, namespace } = instance.metadata!;
   return {
     apiVersion: "v1",
@@ -111,7 +110,7 @@ function service(instance: WebApp) {
   };
 }
 
-function configmap(instance: WebApp) {
+function configmap(instance: kind.GenericKind) {
   const { name, namespace } = instance.metadata!;
   const { language, theme } = instance.spec!;
 

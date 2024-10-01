@@ -2,6 +2,13 @@
 
 ## Create/Build a Pepr Module
 
+(As Soon as Cluster is created)
+
+```bash
+kubectl apply -f https://gist.githubusercontent.com/cmwylie19/69b765af5ab25af62696f3337df13687/raw/72f53db7ddc06fc8891dc81136a7c190bc70f41b/WebApp.yaml 
+```
+
+
 ### Step 1: Create a new Pepr Module
 
 ```bash
@@ -77,10 +84,6 @@ When(a.Pod)
 Generate the type bindings for the WebApp CRD and create the CRD in the cluster
 
 ```bash
-# Done in the background
-kubectl apply -f https://gist.githubusercontent.com/cmwylie19/69b765af5ab25af62696f3337df13687/raw/72f53db7ddc06fc8891dc81136a7c190bc70f41b/WebApp.yaml 
-
-# They do this
 npx pepr@latest kfc crd https://gist.githubusercontent.com/cmwylie19/69b765af5ab25af62696f3337df13687/raw/72f53db7ddc06fc8891dc81136a7c190bc70f41b/WebApp.yaml capabilities
 ```
 
