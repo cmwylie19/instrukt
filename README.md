@@ -167,6 +167,8 @@ Look at the resources:
 k get po no-resources -ojsonpath='{.spec.containers[0].resources}' | jq
 ```     
 
+Also, check the monitor command somewhere here 
+
 ### Step 4: Deploy a WebApp
 (Note: Deployer.ts is already in capabilities)
 
