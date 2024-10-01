@@ -165,6 +165,7 @@ k get po no-resources -ojsonpath='{.spec.containers[0].resources}' | jq
 ```     
 
 ### Step 4: Deploy a WebApp
+(Note: Deployer.ts is already in capabilities)
 
 ```bash
 kubectl create ns webapps;

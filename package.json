@@ -1,0 +1,40 @@
+{
+  "name": "cluster-controller",
+  "version": "0.0.1",
+  "description": "Control Apps and Global Cluster Security Posture",
+  "keywords": [
+    "pepr",
+    "k8s",
+    "policy-engine",
+    "pepr-module",
+    "security"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "pepr": {
+    "uuid": "4ddb0790-f940-556e-9561-5c6a84d037af",
+    "onError": "reject",
+    "webhookTimeout": 10,
+    "customLabels": {
+      "namespace": {
+        "pepr.dev": ""
+      }
+    },
+    "alwaysIgnore": {
+      "namespaces": []
+    },
+    "includedFiles": [],
+    "env": {}
+  },
+  "scripts": {
+    "k3d-setup": "k3d cluster delete pepr-dev && k3d cluster create pepr-dev --k3s-arg '--debug@server:0' --wait && kubectl rollout status deployment -n kube-system"
+  },
+  "dependencies": {
+    "pepr": "0.37.1",
+    "nock": "13.5.4"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3"
+  }
+}
