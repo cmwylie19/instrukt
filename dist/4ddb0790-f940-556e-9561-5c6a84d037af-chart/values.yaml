@@ -1,0 +1,124 @@
+secrets:
+  apiToken: 'M2FlNjNlNjA4NmJlYzQ0NDdkZDk4MzY2MjA4ZDk2M2QxYjVjZTMyMWM4MWFjZThkNmJmODVlYzQxOTVmODIwMQ=='
+hash: '168a2c3ed539bc7e550e9643b026bcf24137592e408c740b0e8bbc06fe614ca5'
+namespace:
+  annotations: {}
+  labels:
+    pepr.dev: ''
+uuid: 'pepr-4ddb0790-f940-556e-9561-5c6a84d037af'
+admission:
+  terminationGracePeriodSeconds: 5
+  failurePolicy: 'Fail'
+  webhookTimeout: 10
+  env:
+    - name: 'PEPR_PRETTY_LOG'
+      value: 'false'
+    - name: 'LOG_LEVEL'
+      value: 'info'
+  envFrom: []
+  image: 'ghcr.io/defenseunicorns/pepr/controller:v0.37.2'
+  annotations:
+    pepr.dev/description: 'Control Apps and Global Cluster Security Posture'
+  labels:
+    app: 'pepr-4ddb0790-f940-556e-9561-5c6a84d037af'
+    pepr.dev/controller: 'admission'
+    pepr.dev/uuid: '4ddb0790-f940-556e-9561-5c6a84d037af'
+  securityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    runAsNonRoot: true
+    fsGroup: 65532
+  readinessProbe:
+    httpGet:
+      path: '/healthz'
+      port: 3000
+      scheme: 'HTTPS'
+    initialDelaySeconds: 10
+  livenessProbe:
+    httpGet:
+      path: '/healthz'
+      port: 3000
+      scheme: 'HTTPS'
+    initialDelaySeconds: 10
+  resources:
+    requests:
+      memory: '64Mi'
+      cpu: '100m'
+    limits:
+      memory: '256Mi'
+      cpu: '500m'
+  containerSecurityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - 'ALL'
+  podAnnotations: {}
+  nodeSelector: {}
+  tolerations: []
+  extraVolumeMounts: []
+  extraVolumes: []
+  affinity: {}
+  serviceMonitor:
+    enabled: false
+    labels: {}
+    annotations: {}
+watcher:
+  terminationGracePeriodSeconds: 5
+  env:
+    - name: 'PEPR_PRETTY_LOG'
+      value: 'false'
+    - name: 'LOG_LEVEL'
+      value: 'info'
+  envFrom: []
+  image: 'ghcr.io/defenseunicorns/pepr/controller:v0.37.2'
+  annotations:
+    pepr.dev/description: 'Control Apps and Global Cluster Security Posture'
+  labels:
+    app: 'pepr-4ddb0790-f940-556e-9561-5c6a84d037af-watcher'
+    pepr.dev/controller: 'watcher'
+    pepr.dev/uuid: '4ddb0790-f940-556e-9561-5c6a84d037af'
+  securityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    runAsNonRoot: true
+    fsGroup: 65532
+  readinessProbe:
+    httpGet:
+      path: '/healthz'
+      port: 3000
+      scheme: 'HTTPS'
+    initialDelaySeconds: 10
+  livenessProbe:
+    httpGet:
+      path: '/healthz'
+      port: 3000
+      scheme: 'HTTPS'
+    initialDelaySeconds: 10
+  resources:
+    requests:
+      memory: '64Mi'
+      cpu: '100m'
+    limits:
+      memory: '256Mi'
+      cpu: '500m'
+  containerSecurityContext:
+    runAsUser: 65532
+    runAsGroup: 65532
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - 'ALL'
+  nodeSelector: {}
+  tolerations: []
+  extraVolumeMounts: []
+  extraVolumes: []
+  affinity: {}
+  podAnnotations: {}
+  serviceMonitor:
+    enabled: false
+    labels: {}
+    annotations: {}

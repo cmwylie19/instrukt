@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: pepr-4ddb0790-f940-556e-9561-5c6a84d037af
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: pepr-4ddb0790-f940-556e-9561-5c6a84d037af
+subjects:
+  - kind: ServiceAccount
+    name: pepr-4ddb0790-f940-556e-9561-5c6a84d037af
+    namespace: pepr-system
